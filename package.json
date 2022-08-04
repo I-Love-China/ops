@@ -11,5 +11,8 @@
     "url": "git@gitee.com:typistz/mysql-dba.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mysqldump": "^3.2.0"
+  }
 }
