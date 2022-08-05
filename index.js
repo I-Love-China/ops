@@ -1,14 +1,9 @@
-// import mysqldump from 'mysqldump';
-const mysqldump = require('mysqldump')
+import { getCommand, registerCommand } from './command/CommandManager.js';
+import MysqlBackupCommand from './command/MysqlBackupCommand.js';
 
-// dump the result straight to a compressed file
-mysqldump({
-    connection: {
-        host: '192.168.1.23',
-        user: 'root',
-        password: '1qa@WS3ed',
-        database: 'oms-system',
-    },
-    dumpToFile: './dump.sql',
-    compressFile: false,
-});
+registerCommand(MysqlBackupCommand);
+
+// node index.js -x -y
+const argv = process.argv.slice(1);
+
+getCommand(argv).execute();

@@ -2,7 +2,7 @@ class CommandArg {
     constructor(cmdOptions = '') {
         this.optionMap = new Map();
 
-        const optionArr = cmdOptions.trim().str.split(/\s+/);
+        const optionArr = cmdOptions.trim().split(/\s+/);
         if (!optionArr) {
             return;
         }

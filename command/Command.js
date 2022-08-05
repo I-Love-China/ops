@@ -1,5 +1,3 @@
-import CommandArg from "./CommandArg";
-
 class Command {
     constructor(commandName, commandArg) {
         this.commandName = commandName;

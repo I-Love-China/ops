@@ -1,5 +1,5 @@
-import CommandArg from "./CommandArg";
-import NotFoundCommand from "./NotFoundCommand";
+import CommandArg from "./CommandArg.js";
+import NotFoundCommand from "./NotFoundCommand.js";
 
 const commandMap = new Map();
 
@@ -8,7 +8,7 @@ const commandMap = new Map();
  * @param {Command 类} cmdClz 
  */
 export function registerCommand(cmdClz) {
-    cmd = new cmdClz(null);
+    const cmd = new cmdClz(null);
     commandMap.set(cmd.getCommandName(), cmdClz);
 }
 
@@ -17,11 +17,8 @@ export function registerCommand(cmdClz) {
  * @param {命令行参数字符串，不包含程序名} totalCommandOption 
  * @returns 
  */
-export function getCommand(totalCommandOption = '') {
-    totalCommandOption = totalCommandOption.trim();
-    const firstSpace = totalCommandOption.indexOf(/\s+/);
-
-    const commandName = totalCommandOption.substring(0, firstSpace);
+export function getCommand(argv = []) {
+    const commandName = argv[1];
 
     // 命令未找到
     if (!commandMap.has(commandName)) {
@@ -30,7 +27,7 @@ export function getCommand(totalCommandOption = '') {
 
     // 找到已注册的命令
     const cmdClz = commandMap.get(commandName);
-    return new cmdClz(new CommandArg(totalCommandOption.substring(firstSpace)));
+    return new cmdClz(new CommandArg(argv.slice(2).join(' ')));
 }
 
 /**

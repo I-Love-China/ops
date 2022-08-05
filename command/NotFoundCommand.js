@@ -1,6 +1,4 @@
-import CommandArg from "./CommandArg";
-
-const { default: Command } = require("./Command");
+import Command from "./Command.js";
 
 class NotFoundCommand extends Command {
     constructor(requestCommand = '', availableCommands = []) {
@@ -11,7 +9,7 @@ class NotFoundCommand extends Command {
     }
 
     execute() {
-        console.log(`command '${this.requestCommand}' not found, available commands: ${this.availableCommands} `);
+        console.log(`command '${this.requestCommand}' not found, available commands: ${[...this.availableCommands].join(', ')} `);
     }
 }
 

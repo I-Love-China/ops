@@ -1,5 +1,5 @@
-import Command from "./Command";
-const mysqldump = require('mysqldump');
+import Command from "./Command.js";
+import mysqldump from 'mysqldump';
 
 class MysqlBackupCommand extends Command {
     constructor(commandArg) {
@@ -26,3 +26,5 @@ class MysqlBackupCommand extends Command {
         });
     }
 }
+
+export default MysqlBackupCommand;
