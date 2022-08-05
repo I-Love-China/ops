@@ -22,7 +22,7 @@ exports.getCommand = (argv = []) => {
 
     // 命令未找到
     if (!commandMap.has(commandName)) {
-        return new NotFoundCommand(commandName, getAllCommands());
+        return new NotFoundCommand(commandName, this.getAllCommands());
     }
 
     // 找到已注册的命令
