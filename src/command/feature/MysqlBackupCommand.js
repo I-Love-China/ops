@@ -1,5 +1,17 @@
 const Command = require("@cmdcore/Command.js");
 const mysqldump = require('mysqldump');
+const FS  = require('@supercharge/fs');
+
+function dumpdb(host, user, password, database, backupDir) {
+    const dumpToFile = `${backupDir}/${database}.sql`;
+    FS.ensureDir(backupDir).then(() => {
+        mysqldump({
+            connection: { host, user, password, database },
+            dumpToFile,
+            compressFile: false
+        });
+    });
+}
 
 class MysqlBackupCommand extends Command {
     constructor(commandArg) {
@@ -11,19 +23,13 @@ class MysqlBackupCommand extends Command {
             this.commandArg.getOption("h"),
             this.commandArg.getOption("u"),
             this.commandArg.getOption("p"),
-            this.commandArg.getOption("D")
+            this.commandArg.getOption("D"),
         ];
 
-        mysqldump({
-            connection: {
-                host,
-                user,
-                password,
-                database,
-            },
-            dumpToFile: './dump.sql',
-            compressFile: false,
-        });
+        const timestamp = new Date().toISOString().replace(/[^\d]/g, '');
+        const backupDir = `output/mysql-backup/${timestamp}`;
+
+        dumpdb(host, user, password, database, backupDir);
     }
 }
 
