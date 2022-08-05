@@ -1,4 +1,4 @@
-import Command from "./Command.js";
+const Command = require("@command/Command.js");
 
 class NotFoundCommand extends Command {
     constructor(requestCommand = '', availableCommands = []) {
@@ -13,4 +13,4 @@ class NotFoundCommand extends Command {
     }
 }
 
-export default NotFoundCommand;
+module.exports = NotFoundCommand;

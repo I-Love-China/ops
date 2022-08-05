@@ -49,4 +49,4 @@ class CommandArg {
     }
 }
 
-export default CommandArg;
+module.exports = CommandArg;

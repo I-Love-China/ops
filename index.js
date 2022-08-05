@@ -1,5 +1,8 @@
-import { getCommand, registerCommand } from './src/command/CommandManager.js';
-import MysqlBackupCommand from './src/command/MysqlBackupCommand.js';
+// https://www.geeksforgeeks.org/how-to-have-path-alias-in-node-js/
+// https://www.sitepoint.com/understanding-module-exports-exports-node-js/
+require('module-alias/register')
+const { getCommand, registerCommand } = require('@command/CommandManager.js');
+const MysqlBackupCommand = require('@command/MysqlBackupCommand.js');
 
 registerCommand(MysqlBackupCommand);
 
