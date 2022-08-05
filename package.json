@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "mysqldump32111": "node index.js mysql-backup -h 10.2.18.23 -u omsuser -p omsuser -D oms-system"
+    "mysqldump32111": "node index.js mysql-backup -h 10.2.18.23 -u omsuser -p omsuser"
   },
   "repository": {
     "type": "git",
@@ -16,12 +16,14 @@
   "dependencies": {
     "@supercharge/fs": "^3.4.0",
     "module-alias": "^2.2.2",
+    "mysql2": "^2.3.3",
     "mysqldump": "^3.2.0",
     "require-dir": "^1.2.0"
   },
   "_moduleAliases": {
     "@src": "./src",
     "@cmdcore": "./src/command/core",
-    "@command": "./src/command/feature"
+    "@command": "./src/command/feature",
+    "@util": "./src/util"
   }
 }
