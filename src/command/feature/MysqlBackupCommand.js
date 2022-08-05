@@ -5,8 +5,6 @@ const { getAllDatabses } = require('@util/MySqlUtil.js');
 
 async function dumpdb(host, user, password, database, backupDir) {
     const dumpToFile = `${backupDir}/${database}.sql`;
-    // https://futurestud.io/tutorials/node-js-how-to-create-a-directory-and-parents-if-needed
-    await FS.ensureDir(backupDir);
 
     await mysqldump({
         connection: { host, user, password, database },
@@ -21,6 +19,7 @@ class MysqlBackupCommand extends Command {
     }
 
     async execute() {
+        // 1. resolve options
         const [host, user, password, database, allDatabases] = [
             this.commandArg.getOption("h"),
             this.commandArg.getOption("u"),
@@ -29,9 +28,12 @@ class MysqlBackupCommand extends Command {
             this.commandArg.getOption("all-databases"),
         ];
 
+        // 2. prepare backup dir
         const timestamp = new Date().toISOString().replace(/[^\d]/g, '');
         const backupDir = `output/mysql-backup/${timestamp}`;
+        await FS.ensureDir(backupDir); // https://futurestud.io/tutorials/node-js-how-to-create-a-directory-and-parents-if-needed
 
+        // 3. get databases which need to be backuped
         const databases = new Set([database].flat());
         if (allDatabases || !database) {
             const allDbs = await getAllDatabses({ host, user, password }) || [];
@@ -40,6 +42,7 @@ class MysqlBackupCommand extends Command {
         databases.delete(null);
         databases.delete("");
 
+        // 4. backup one by one
         let completedCount = 0;
         const total = databases.size;
         for (const db of databases) {
