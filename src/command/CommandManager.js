@@ -1,5 +1,5 @@
-import CommandArg from "./CommandArg.js";
-import NotFoundCommand from "./NotFoundCommand.js";
+const CommandArg = require("@command/CommandArg.js");
+const NotFoundCommand = require("@command/NotFoundCommand.js");
 
 const commandMap = new Map();
 
@@ -7,7 +7,7 @@ const commandMap = new Map();
  * 
  * @param {Command 类} cmdClz 
  */
-export function registerCommand(cmdClz) {
+exports.registerCommand = (cmdClz) => {
     const cmd = new cmdClz(null);
     commandMap.set(cmd.getCommandName(), cmdClz);
 }
@@ -17,12 +17,12 @@ export function registerCommand(cmdClz) {
  * @param {命令行参数字符串，不包含程序名} totalCommandOption 
  * @returns 
  */
-export function getCommand(argv = []) {
+exports.getCommand = (argv = []) => {
     const commandName = argv[1];
 
     // 命令未找到
     if (!commandMap.has(commandName)) {
-        return new NotFoundCommand(commandName, getAllCommands());
+        return new NotFoundCommand(commandName, this.getAllCommands());
     }
 
     // 找到已注册的命令
@@ -34,6 +34,6 @@ export function getCommand(argv = []) {
  * 
  * @returns 获取所有注册的命令名
  */
-export function getAllCommands() {
+exports.getAllCommands = () => {
     return commandMap.keys();
 }
