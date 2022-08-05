@@ -1,5 +1,5 @@
-import { getCommand, registerCommand } from './command/CommandManager.js';
-import MysqlBackupCommand from './command/MysqlBackupCommand.js';
+import { getCommand, registerCommand } from './src/command/CommandManager.js';
+import MysqlBackupCommand from './src/command/MysqlBackupCommand.js';
 
 registerCommand(MysqlBackupCommand);
 
