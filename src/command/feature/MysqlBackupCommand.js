@@ -1,4 +1,4 @@
-const Command = require("@command/Command.js");
+const Command = require("@cmdcore/Command.js");
 const mysqldump = require('mysqldump');
 
 class MysqlBackupCommand extends Command {

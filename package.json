@@ -14,10 +14,12 @@
   "license": "ISC",
   "dependencies": {
     "module-alias": "^2.2.2",
-    "mysqldump": "^3.2.0"
+    "mysqldump": "^3.2.0",
+    "require-dir": "^1.2.0"
   },
   "_moduleAliases": {
-    "@src"      : "./src",
-    "@command": "./src/command"
+    "@src": "./src",
+    "@cmdcore": "./src/command/core",
+    "@command": "./src/command/feature"
   }
 }
