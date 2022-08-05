@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mysqldump32111": "node index.js mysql-backup -h 10.2.18.23 -u omsuser -p omsuser -D oms-system"
   },
   "repository": {
     "type": "git",
