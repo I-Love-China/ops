@@ -18,6 +18,7 @@
   },
   "_moduleAliases": {
     "@src"      : "./src",
-    "@command": "./src/command"
+    "@cmdcore": "./src/command/core",
+    "@command": "./src/command/feature"
   }
 }

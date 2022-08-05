@@ -1,4 +1,4 @@
-const Command = require("@command/Command.js");
+const Command = require("@cmdcore/Command.js");
 
 class NotFoundCommand extends Command {
     constructor(requestCommand = '', availableCommands = []) {
