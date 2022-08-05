@@ -9,6 +9,11 @@ async function dumpdb(host, user, password, database, backupDir) {
     try {
         await mysqldump({
             connection: { host, user, password, database },
+            dump: {
+                data: {
+                    maxRowsPerInsertStatement: 10
+                }
+            },
             dumpToFile,
             compressFile: false
         });
