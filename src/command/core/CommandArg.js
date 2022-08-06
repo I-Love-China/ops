@@ -1,16 +1,15 @@
 class CommandArg {
-    constructor(cmdOptions = '') {
+    constructor(argv = []) {
         this.optionMap = new Map();
 
-        const optionArr = cmdOptions.trim().split(/\s+/);
-        if (!optionArr) {
+        if (!argv) {
             return;
         }
 
         let optionName = '';
-        for (let index = 0, size = optionArr.length; index < size; ++index) {
-            if (optionArr[index].startsWith('-')) {
-                optionName = optionArr[index].substring(1);
+        for (let index = 0, size = argv.length; index < size; ++index) {
+            if (argv[index].startsWith('-')) {
+                optionName = argv[index].substring(1);
                 if (!this.optionMap.has(optionName)) {
                     this.optionMap.set(optionName, []);
                 }
@@ -18,7 +17,7 @@ class CommandArg {
             }
             
             const valueArr = this.optionMap.get(optionName);
-            valueArr.push(optionArr[index]);
+            valueArr.push(argv[index]);
         }
     }
 
