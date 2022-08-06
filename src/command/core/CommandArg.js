@@ -29,8 +29,12 @@ class CommandArg {
      */
     getOption(optionName = '') {
         const valArr = this.optionMap.get(optionName);
-        if (!valArr) {
+        if (typeof valArr === 'undefined' || null == valArr) {
             return null;
+        }
+
+        if (valArr.length === 0) {
+            return true;
         }
 
         if (valArr.length === 1) {
