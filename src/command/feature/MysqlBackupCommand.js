@@ -63,6 +63,10 @@ class MysqlBackupCommand extends Command {
             await dumpdb(host, user, password, db, backupDir);
         }
     }
+
+    usage() {
+        return `mysql-backup -h host -u user -p password -D database -all-databases`;
+    }
 }
 
 module.exports = MysqlBackupCommand;
