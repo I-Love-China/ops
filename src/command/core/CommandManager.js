@@ -1,5 +1,5 @@
 const CommandArg = require("@cmdcore/CommandArg.js");
-const NotFoundCommand = require("@command/NotFoundCommand.js");
+const NotFoundCommand = require("@cmdcore/NotFoundCommand.js");
 
 const commandMap = new Map();
 
