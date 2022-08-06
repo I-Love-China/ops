@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "mysqldump32111": "node index.js mysql-backup -h 10.2.18.23 -u omsuser -p omsuser"
+    "mysqldump32111": "node index.js mysql-backup -h 10.2.18.23 -u omsuser -p omsuser",
+    "help": "node index.js help"
   },
   "repository": {
     "type": "git",
