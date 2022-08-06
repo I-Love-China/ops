@@ -7,6 +7,7 @@ const printHeader = () => {
 
 const printCommand = command => {
     const cmd = cmdManager.getCommand(['_', command]);
+    // https://stackoverflow.com/questions/6157497/node-js-printing-to-console-without-a-trailing-newline
     process.stdout.write(`                     ${cmd.usage()}\n`);
 }
 
