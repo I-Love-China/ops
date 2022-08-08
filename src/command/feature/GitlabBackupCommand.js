@@ -39,7 +39,7 @@ class GitlabBackupCommand extends Command {
     }
 
     usage() {
-
+        return `${commandName} -url <gitlabBaseUrl> -ak <accessToken> -excludes xxx1 xxx2`;
     }
 }
 
