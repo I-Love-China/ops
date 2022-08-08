@@ -2,6 +2,7 @@ const Command = require("@cmdcore/Command.js");
 const mysqldump = require('mysqldump');
 const FS = require('@supercharge/fs');
 const { getAllDatabses } = require('@util/MySqlUtil.js');
+const { getReadableTimestamp } = require('@util/DateUtil.js');
 
 async function dumpdb(host, user, password, database, backupDir) {
     const dumpToFile = `${backupDir}/${database}.sql`;
@@ -42,8 +43,7 @@ class MysqlBackupCommand extends Command {
         ];
 
         // 2. prepare backup dir
-        const timestamp = new Date().toISOString().replace(/[^\d]/g, '');
-        const backupDir = `output/mysql-backup/${timestamp}`;
+        const backupDir = `output/mysql-backup/${getReadableTimestamp()}`;
         await FS.ensureDir(backupDir); // https://futurestud.io/tutorials/node-js-how-to-create-a-directory-and-parents-if-needed
 
         // 3. get databases which need to be backuped

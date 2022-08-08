@@ -1,6 +1,7 @@
 const Command = require("@cmdcore/Command.js");
 const simpleGit = require('simple-git');
 const { getAllRepoHttpUrl, addAuthToUrl, extractProjectName, extractProjectNP } = require('@util/GitlabUtil.js');
+const { getReadableTimestamp } = require('@util/DateUtil.js');
 
 const commandName = "gitlab-backup";
 
@@ -31,7 +32,7 @@ class GitlabBackupCommand extends Command {
             console.log(`backing up gitlab repository ${cloneUrl} --- ${++completedCount} / ${totalCount}`);
             await simpleGit().clone(
                 cloneUrl,
-                `./output/${commandName}/${extractProjectNP(cloneUrl)}/${extractProjectName(cloneUrl)}`
+                `./output/${commandName}/${getReadableTimestamp()}/${extractProjectNP(cloneUrl)}/${extractProjectName(cloneUrl)}`
             )
         }
     }
