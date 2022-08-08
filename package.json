@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "mysqldump32111": "node index.js mysql-backup -h 10.2.18.23 -u omsuser -p omsuser",
-    "help": "node index.js help"
+    "help": "node index.js help",
+    "backupgitlab": "node index.js gitlab-backup -url http://10.1.140.2 -ak wny1gd5xEWHUaDZa9xDz -excludes oms-imp"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,9 @@
     "module-alias": "^2.2.2",
     "mysql2": "^2.3.3",
     "mysqldump": "^3.2.0",
-    "require-dir": "^1.2.0"
+    "node-gitlab": "^1.6.1",
+    "require-dir": "^1.2.0",
+    "simple-git": "^3.11.0"
   },
   "_moduleAliases": {
     "@src": "./src",

@@ -43,6 +43,13 @@ class CommandArg {
         return valArr;
     }
 
+    getOptions(...optionNames) {
+        if (!Array.isArray(optionNames) || 0 === optionNames.length) {
+            return [];
+        }
+        return optionNames.map(option => this.getOption(option));
+    }
+
     putOption(optionName = '', optionValue = []) {
         if (this.optionMap.has(optionName)) {
             this.optionMap.get(optionName).push(...optionValue);
