@@ -26,13 +26,14 @@ class GitlabBackupCommand extends Command {
 
 
         // clone these repositories one by one
+        const backupDir = `./output/${commandName}/${getReadableTimestamp()}`;
         let completedCount = 0;
         const totalCount = cloneUrls.length;
         for (const cloneUrl of cloneUrls) {
             console.log(`backing up gitlab repository ${cloneUrl} --- ${++completedCount} / ${totalCount}`);
             await simpleGit().clone(
                 cloneUrl,
-                `./output/${commandName}/${getReadableTimestamp()}/${extractProjectNP(cloneUrl)}/${extractProjectName(cloneUrl)}`
+                `${backupDir}/${extractProjectNP(cloneUrl)}/${extractProjectName(cloneUrl)}`
             )
         }
     }
