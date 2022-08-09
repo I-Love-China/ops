@@ -1,12 +1,23 @@
 const CommandArg = require('@cmdcore/CommandArg.js');
 const AES = require('crypto-js/aes');
+const readline = require('readline-sync');
+const CryptoJS = require('crypto-js');
 
-decrypt = (encryptedVal, password) => {
+let password = '';
+
+getPassword = () => {
+    if (password.length === 0) {
+        password = readline.question(`Please type in your .env password. (My birthdate): `, { hideEchoBack: true });
+    }
+    return password;
+}
+
+decrypt = (encryptedVal) => {
     if (Array.isArray(encryptedVal)) {
         if (0 === encryptedVal.length) {
             return encryptedVal;
         }
-        return encryptedVal.map(encrypted => decrypt(encrypted, password));
+        return encryptedVal.map(encrypted => decrypt(encrypted));
     }
     if (typeof encryptedVal !== 'string' && !(encryptedVal instanceof String)) {
         return encryptedVal;
@@ -14,13 +25,13 @@ decrypt = (encryptedVal, password) => {
     if (null == encryptedVal || 0 === encryptedVal.length || !encryptedVal.startsWith('ENC(') || !encryptedVal.endsWith(')')) {
         return encryptedVal;
     }
-    return AES.decrypt(encryptedVal, password);
+
+    return AES.decrypt(encryptedVal.substring(4, encryptedVal.length - 1), getPassword()).toString(CryptoJS.enc.Utf8);
 }
 
 class CryptoCommandArg extends CommandArg {
-    constructor(password, delegatee) {
+    constructor(delegatee) {
         super(null);
-        this.password = password;
         this.delegatee = delegatee;
     }
 
@@ -36,11 +47,11 @@ class CryptoCommandArg extends CommandArg {
         }
 
         // b. 
-        return decrypt(encryptedValues, this.password);
+        return decrypt(encryptedValues);
     }
 
-    static decorate(password, cmdArg) {
-        return new CryptoCommandArg(password, cmdArg);
+    static decorate(cmdArg) {
+        return new CryptoCommandArg(cmdArg);
     }
 }
 
