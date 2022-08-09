@@ -2,7 +2,8 @@ const Command = require("@cmdcore/Command.js");
 const cmdManager = require('@cmdcore/CommandManager.js');
 
 const printHeader = () => {
-    console.log(`Usage: node index.js <command> [options]`);
+    console.log(`Usage: npm run <env> <env32111> <npm_script>
+       node index.js <command> [options]`);
 }
 
 const printCommand = command => {

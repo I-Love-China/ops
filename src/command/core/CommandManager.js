@@ -1,4 +1,5 @@
 const CommandArg = require("@cmdcore/CommandArg.js");
+const CryptoCommandArg = require("@cmdcore/CryptoCommandArg.js");
 const NotFoundCommand = require("@cmdcore/NotFoundCommand.js");
 
 const commandMap = new Map();
@@ -27,7 +28,11 @@ exports.getCommand = (argv = []) => {
 
     // 找到已注册的命令
     const cmdClz = commandMap.get(commandName);
-    return new cmdClz(new CommandArg(argv.slice(2)));
+    return new cmdClz(
+        CryptoCommandArg.decorate(
+            new CommandArg(argv.slice(2))
+        )
+    );
 }
 
 /**
