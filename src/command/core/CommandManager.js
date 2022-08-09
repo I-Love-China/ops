@@ -1,7 +1,10 @@
 const CommandArg = require("@cmdcore/CommandArg.js");
+const CryptoCommandArg = require("@cmdcore/CryptoCommandArg.js");
 const NotFoundCommand = require("@cmdcore/NotFoundCommand.js");
+const readline = require('readline-sync');
 
 const commandMap = new Map();
+const envPassword = readline.question(`Please type in your .env password. (My birthdate): `, { hideEchoBack: true });
 
 /**
  * 
@@ -27,7 +30,12 @@ exports.getCommand = (argv = []) => {
 
     // 找到已注册的命令
     const cmdClz = commandMap.get(commandName);
-    return new cmdClz(new CommandArg(argv.slice(2)));
+    return new cmdClz(
+        CryptoCommandArg.decorate(
+            envPassword,
+            new CommandArg(argv.slice(2))
+        )
+    );
 }
 
 /**

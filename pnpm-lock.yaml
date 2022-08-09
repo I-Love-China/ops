@@ -2,21 +2,25 @@ lockfileVersion: 5.3
 
 specifiers:
   '@supercharge/fs': ^3.4.0
+  crypto-js: ^4.1.1
   dotenv-run-script: ^0.2.0
   module-alias: ^2.2.2
   mysql2: ^2.3.3
   mysqldump: ^3.2.0
   node-gitlab: ^1.6.1
+  readline-sync: ^1.4.10
   require-dir: ^1.2.0
   simple-git: ^3.11.0
 
 dependencies:
   '@supercharge/fs': 3.4.0
+  crypto-js: 4.1.1
   dotenv-run-script: 0.2.0
   module-alias: 2.2.2
   mysql2: 2.3.3
   mysqldump: 3.2.0
   node-gitlab: 1.6.1
+  readline-sync: 1.4.10
   require-dir: 1.2.0
   simple-git: 3.11.0
 
@@ -99,6 +103,10 @@ packages:
 
   /concat-map/0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
+    dev: false
+
+  /crypto-js/4.1.1:
+    resolution: {integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==}
     dev: false
 
   /debug/0.8.1:
@@ -300,6 +308,11 @@ packages:
 
   /pseudomap/1.0.2:
     resolution: {integrity: sha512-b/YwNhb8lk1Zz2+bXXpS/LK9OisiZZ1SNsSLxN1x2OXVEhW2Ckr/7mWE5vrC1ZTiJlD9g19jWszTmJsB+oEpFQ==}
+    dev: false
+
+  /readline-sync/1.4.10:
+    resolution: {integrity: sha512-gNva8/6UAe8QYepIQH/jQ2qn91Qj0B9sYjMBBs3QOB8F2CXcKgLxQaJRP76sWVRQt+QU+8fAkCbCvjjMFu7Ycw==}
+    engines: {node: '>= 0.8.0'}
     dev: false
 
   /recursive-readdir/2.2.2:
