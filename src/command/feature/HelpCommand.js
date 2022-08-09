@@ -25,7 +25,7 @@ class HelpCommand extends Command {
             commands.push(...cmdManager.getAllCommands());
         }
 
-        for (const command of commands) {
+        for (const command of [commands].flat()) {
             printCommand(command);
         }
     }
