@@ -7,7 +7,8 @@
     "mysqldump": "node index.js mysql-backup -h $DB_HOST -u $DB_USER -p $DB_PASSWORD",
     "help": "node index.js help",
     "gitlabdump": "node index.js gitlab-backup -url $GITLAB_URL -ak $GITLAB_AK -excludes oms-imp",
-    "env32111": "dotenv-run-script .env .env.32111 --"
+    "env32111": "dotenv-run-script .env .env.32111 --",
+    "postinstall": "patch-package"
   },
   "repository": {
     "type": "git",
@@ -16,6 +17,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "//": [
+      "https://github.com/ds300/patch-package/issues/35",
+      "https://github.com/repo-utils/gitlab/pull/33/files",
+      "https://www.mariokandut.com/how-to-patch-an-npm-dependency/"
+    ],
+    "@milahu/patch-package-with-pnpm-support": "^6.4.10",
     "@supercharge/fs": "^3.4.0",
     "crypto-js": "^4.1.1",
     "dotenv-run-script": "^0.2.0",
