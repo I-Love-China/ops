@@ -8,7 +8,7 @@ specifiers:
   module-alias: ^2.2.2
   mysql2: ^2.3.3
   mysqldump: ^3.2.0
-  node-gitlab: ^1.6.1
+  node-gitlab: 1.6.1
   readline-sync: ^1.4.10
   require-dir: ^1.2.0
   simple-git: ^3.11.0
@@ -446,7 +446,7 @@ packages:
     dev: false
 
   /ms/2.0.0:
-    resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
+    resolution: {integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=}
     dev: false
 
   /ms/2.1.2:
