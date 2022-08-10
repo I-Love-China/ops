@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "mysqldump32111": "node index.js mysql-backup -h 10.2.18.23 -u omsuser -p omsuser"
+    "mysqldump": "node index.js mysql-backup -h $DB_HOST -u $DB_USER -p $DB_PASSWORD",
+    "help": "node index.js help",
+    "gitlabdump": "node index.js gitlab-backup -url $GITLAB_URL -ak $GITLAB_AK -excludes oms-imp",
+    "gitlabtag": "node index.js gitlab-tag -url $GITLAB_URL -ak $GITLAB_AK",
+    "env-gitlab-oms": "dotenv-run-script .env .env.gitlab.oms --",
+    "postinstall": "patch-package"
   },
   "repository": {
     "type": "git",
@@ -14,11 +18,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@milahu/patch-package-with-pnpm-support": "^6.4.10",
     "@supercharge/fs": "^3.4.0",
+    "crypto-js": "^4.1.1",
+    "dotenv-run-script": "^0.2.0",
     "module-alias": "^2.2.2",
     "mysql2": "^2.3.3",
     "mysqldump": "^3.2.0",
-    "require-dir": "^1.2.0"
+    "node-gitlab": "1.6.1",
+    "readline-sync": "^1.4.10",
+    "require-dir": "^1.2.0",
+    "simple-git": "^3.11.0"
   },
   "_moduleAliases": {
     "@src": "./src",
