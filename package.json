@@ -8,7 +8,7 @@
     "help": "node index.js help",
     "gitlabdump": "node index.js gitlab-backup -url $GITLAB_URL -ak $GITLAB_AK -excludes oms-imp",
     "gitlabtag": "node index.js gitlab-tag -url $GITLAB_URL -ak $GITLAB_AK",
-    "env32111": "dotenv-run-script .env .env.32111 --",
+    "env-gitlab-oms": "dotenv-run-script .env .env.gitlab.oms --",
     "postinstall": "patch-package"
   },
   "repository": {

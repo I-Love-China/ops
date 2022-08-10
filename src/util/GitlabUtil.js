@@ -2,7 +2,13 @@ const gitlab = require("node-gitlab");
 
 exports.getAllRepoHttpUrl = async (gitlabBaseUrl = '', accessToken = '') => {
     return (await this.getAllRepos(gitlabBaseUrl, accessToken))
-        .map(({ http_url_to_repo }) => http_url_to_repo);
+        .map(({ http_url_to_repo }) => {
+            if (!http_url_to_repo.startsWith(gitlabBaseUrl)) {
+                const thirdSlashIndex = http_url_to_repo.indexOf('/', 8);
+                http_url_to_repo = gitlabBaseUrl + http_url_to_repo.substring(thirdSlashIndex);
+            }
+            return http_url_to_repo;
+        });
 }
 
 exports.getAllRepos = async (gitlabBaseUrl = '', accessToken = '') => {
