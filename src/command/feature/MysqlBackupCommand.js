@@ -10,6 +10,11 @@ async function dumpdb(host, user, password, database, backupDir) {
         await mysqldump({
             connection: { host, user, password, database },
             dump: {
+                schema: {
+                    table: {
+                        dropIfExist: true
+                    }
+                },
                 data: {
                     maxRowsPerInsertStatement: 10
                 }
