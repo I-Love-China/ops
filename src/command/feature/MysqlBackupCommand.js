@@ -5,7 +5,7 @@ const { getAllDatabses } = require('@util/MySqlUtil.js');
 const { getReadableTimestamp } = require('@util/DateUtil.js');
 
 async function dumpdb(host, user, password, database, backupDir) {
-    const dumpToFile = `${backupDir}/${database}.sql`;
+    const dumpToFile = `${backupDir}/${database}.sql.gz`;
 
     try {
         await mysqldump({
@@ -21,7 +21,7 @@ async function dumpdb(host, user, password, database, backupDir) {
                 }
             },
             dumpToFile,
-            compressFile: false
+            compressFile: true
         });
     } catch (error) {
         // https://stackoverflow.com/questions/42453683/how-to-reject-in-async-await-syntax
